@@ -9,6 +9,10 @@
     <ul>
       <li v-for="todo of doneTodos" :key="todo.id">{{todo.text}}</li>
     </ul>
+    <form>
+      <label for="number">number</label>
+      <input id="number" type="number" @input="incrementNumber">
+    </form>
   </div>
 </template>
 
@@ -36,6 +40,14 @@ export default {
       setTimeout(() => {
         this.$store.commit("doneTodo");
       }, 1000);
+    },
+    incrementNumber(e) {
+      this.$store.commit("incrementNumber", e.target.value);
+      //Ou podemos realizar o commit com um objeto literal indicando o type do commit
+      this.$store.commit({
+        type: "incrementNumberPayload",
+        number: e.target.value
+      });
     }
   },
   // Para usar o estado do vuex, temos que chamar a variavel passada por props, this.$store.state

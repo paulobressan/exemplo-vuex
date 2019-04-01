@@ -30,7 +30,10 @@ const store = new Vuex.Store({
         return todo
       })
       return state.todo
-    }
+    },
+    // Podemos passar argumentos para um mutation e alterar o estado de acordo com esse argumento
+    incrementNumber: (state, number) => state.count = state.count + parseInt(number),
+    incrementNumberPayload: (state, payload) => state.count = state.count + parseInt(payload.number)
   },
   /** 
    * O Vuex nos permite definir getters no store. 

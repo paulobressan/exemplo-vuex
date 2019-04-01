@@ -60,7 +60,11 @@ export default {
       return this.$store.getters.doneTodos;
     },
     //Acessando um getter com um helper mapGetters
-    ...mapGetters(["doneTodos"])
+    ...mapGetters(["doneTodos"]),
+    //Ou podemos mapear um getter com um nome diferente
+    ...mapGetters({
+      getterDoneTodos: "doneTodos"
+    })
   }
   //Podemos passar um array com os nomes dos estados que quemos utilizar no contexto do componente
   // Evitando sempre chamar um callback para mapear os state
